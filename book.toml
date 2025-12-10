@@ -1,0 +1,14 @@
+[book]
+authors = ["Randy Halim"]
+language = "en"
+src = "src"
+title = "Randy's Cyber Survival Guide"
+
+# [preprocessor.indexing]
+
+[output.html]
+
+[output.compress]
+highlight = "no-node"
+
+

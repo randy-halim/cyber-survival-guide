@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build book
-        run: mdbook build
+        run: /bin/bash ./build-book.sh
 
       - name: Upload html artifact
         uses: actions/upload-artifact@v4

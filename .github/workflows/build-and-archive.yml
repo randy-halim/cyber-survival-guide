@@ -30,7 +30,14 @@ jobs:
       - name: Upload html artifact
         uses: actions/upload-artifact@v4
         with:
+          name: github-pages
           path: ./book/html
+
+      - name: Upload pdf artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: book-pdf
+          path: ./book/pdf
 
   deploy:
     environment:
@@ -43,12 +50,3 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  artifacts:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: book-pdf
-          path: ./book/pdf/output.pdf

@@ -27,10 +27,15 @@ jobs:
       - name: Build book
         run: /bin/bash ./build-book.sh
 
-      - name: Upload html artifact
+      - name: Upload html (pages) artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./book/html
+
+      - name: Upload html (archive) artifact
         uses: actions/upload-artifact@v4
         with:
-          name: github-pages
+          name: book-html
           path: ./book/html
 
       - name: Upload pdf artifact

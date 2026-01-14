@@ -4,7 +4,6 @@ language = "en"
 src      = "src-build"
 title    = "Randy's Cyber Survival Guide"
 
-# [preprocessor.obsidian]
 [preprocessor.indexing]
 
 [output.html]

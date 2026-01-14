@@ -1,0 +1,53 @@
+name: Build mdbook and upload
+on: 
+  push: 
+    branches: ["main"]
+    
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/randy-halim/mdbook-custom:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build book
+        run: mdbook build
+
+      - name: Upload html artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: ./book/html
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  artifacts:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: book-pdf
+          path: ./book/pdf/output.pdf

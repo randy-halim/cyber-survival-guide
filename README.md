@@ -4,7 +4,7 @@ I made this as a "cookbook" of sorts, taking clear inspiration from the
 et. al. My eventual goal is to get this in a more or less indexed state where I can easily print it out
 and have it handy whenever I do cyber threat hunting, DFIR, and other fun stuff.
 
-**LAST UPDATED:** `14 Jan 2026`
+**LAST UPDATED:** `17 Jan 2026`
 
 
 ## Accessing This Book
@@ -14,7 +14,7 @@ or downloading the **PDF book**.
 **Repo Pages**
 Access the online book here: https://randy-halim.github.io/cyber-survival-guide/
 
-**HTML/PDF Archive"
+**HTML/PDF Archive**
 1. Go to the workflow run: https://github.com/randy-halim/cyber-survival-guide/actions/workflows/build-and-archive.yml
 2. Select the latest successful workflow run
 3. Scroll to the bottom and download the wanted artifacts. There is one with the HTML site (can serve using your own webserver) and one with the PDF.

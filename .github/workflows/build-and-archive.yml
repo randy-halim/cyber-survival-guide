@@ -14,35 +14,44 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/randy-halim/mdbook-custom:latest
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install system dependencies (for WeasyPrint)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
       - name: Build book
-        run: /bin/bash ./build-book.sh
+        run: |
+          export ENABLE_PDF_EXPORT=1
+          mkdocs build
 
       - name: Upload html (pages) artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./book/html
+          path: ./site
 
       - name: Upload html (archive) artifact
         uses: actions/upload-artifact@v4
         with:
           name: book-html
-          path: ./book/html
+          path: ./site
 
       - name: Upload pdf artifact
         uses: actions/upload-artifact@v4
         with:
           name: book-pdf
-          path: ./book/pdf
+          path: ./site/pdf
 
   deploy:
     environment:

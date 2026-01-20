@@ -21,34 +21,41 @@ Access the online book here: https://randy-halim.github.io/cyber-survival-guide/
 
 
 ## Building This Book
-I used the following toolchain when building this book so far:
-- `mdbook` provided by Rust: https://github.com/rust-lang/mdBook
-- `mdbook-pdf` to produce a PDF version of the book: https://github.com/HollowMan6/mdbook-pdf
-- ~~`mdbook-indexing` as a preprocessor to add an index to the book: https://github.com/daviddrysdale/mdbook-indexing~~ I haven't tried this yet.
-- Obsidian as my editor of choice (although `vim` works in a pinch for quick edits!): https://obsidian.md
-- `obsidian-export` for translating most Obsidian-specific Markdown to normal Markdown
+I have migrated the toolchain to **MkDocs** (Python) using the Material theme.
+- `mkdocs` with `mkdocs-material` theme.
+- `mkdocs-callouts` and `mkdocs-roamlinks-plugin` for Obsidian compatibility.
+- `mkdocs-with-pdf` for PDF generation (using WeasyPrint).
 
 If you want to modify this for yourself, follow these general steps:
 1. Clone this repo
 2. Open in Obsidian
 3. edit ??? profit
-4. To build the book, either install the dependencies yourself (plus Chrome/Chromium/something else), or use the container:
+4. To build the book, use one of the following methods:
 
 ```bash
-# method 1: directly on machine
-# make sure you have Chromium or similar installed
-cargo install mdbook mdbook-pdf mdbook-indexing obsidian-export
-bash ./build-book.sh
+# method 1: local python environment
+# (Recommended) use a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 
+# build the site (HTML only)
+mkdocs build
+
+# build with PDF
+export ENABLE_PDF_EXPORT=1
+mkdocs build
+```
+
+```bash
 # method 2: docker container
-docker run --rm -it -v ./:/tmp/repo ghcr.io/randy-halim/mdbook-custom:latest /bin/bash -c 'cd /tmp/repo && bash /tmp/repo/build-book.sh'
+# builds the site inside the container
+docker run --rm -v $(pwd):/docs -w /docs ghcr.io/randy-halim/mdbook-custom:latest mkdocs build
 ```
 
 
 ## Helper Container
-I made a [helper container](https://github.com/randy-halim/cyber-survival-guide/pkgs/container/mdbook-custom)
-with all the dependencies pre-installed for simplicity. The only drawback is that the container size, mostly
-due to the need for Chromium installed (not Chromium Headless)
+I made a [helper container](https://github.com/randy-halim/cyber-survival-guide/pkgs/container/mdbook-custom) which now uses Python 3-slim and includes all necessary dependencies for building the site and PDF (including WeasyPrint libs).
 
 ```bash
 docker pull ghcr.io/randy-halim/mdbook-custom:latest

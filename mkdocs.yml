@@ -1,0 +1,64 @@
+site_name: Randy's Cyber Survival Guide
+site_url: https://randy-halim.github.io/cyber-survival-guide/
+repo_url: https://github.com/randy-halim/cyber-survival-guide
+repo_name: randy-halim/cyber-survival-guide
+edit_uri: ""
+
+theme:
+  name: material
+  features:
+    - navigation.expand
+    - navigation.indexes
+    - content.code.copy
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+  - search
+  - callouts
+  - roamlinks
+  - with-pdf:
+      cover_subtitle: "A digital cookbook for threat hunting context"
+      toc_title: "Table of Contents"
+      output_path: "pdf/book.pdf"
+      enabled_if_env: ENABLE_PDF_EXPORT
+
+nav:
+  - Introduction: 00-preface/001-Introduction.md
+  - Cheat Sheets:
+      - Overview: 01-cheat_sheets/CS_AA_001-Cheat Sheet Overview.md
+      - Wireshark: 01-cheat_sheets/CS_TL_001-Wireshark.md
+      - PowerShell: 01-cheat_sheets/CS_TL_002-PowerShell.md
+  - Course Cliffnotes:
+      - Overview: 05-course_cliffnotes/001-Course Cliffnotes.md
+      - ICS 515 - GIAC GRID: 05-course_cliffnotes/002-ICS 515 - GIAC GRID.md
+  - Referenced Works: 99-postface/001-Referenced Works.md
+  - Other Online Resources: 99-postface/002-Online Resources.md
+
+docs_dir: src

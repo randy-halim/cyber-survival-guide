@@ -39,26 +39,31 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 
+extra_css:
+  - css/pdf_styles.css
+
 plugins:
   - search
   - callouts
   - roamlinks
   - with-pdf:
-      cover_subtitle: "A digital cookbook for threat hunting context"
+      author: "Randy Halim"
+      cover_subtitle: "A digital cookbook of goodies"
       toc_title: "Table of Contents"
       output_path: "pdf/book.pdf"
       enabled_if_env: ENABLE_PDF_EXPORT
 
 nav:
-  - Introduction: 00-preface/001-Introduction.md
-  - Cheat Sheets:
-      - Overview: 01-cheat_sheets/CS_AA_001-Cheat Sheet Overview.md
-      - Wireshark: 01-cheat_sheets/CS_TL_001-Wireshark.md
-      - PowerShell: 01-cheat_sheets/CS_TL_002-PowerShell.md
-  - Course Cliffnotes:
-      - Overview: 05-course_cliffnotes/001-Course Cliffnotes.md
-      - ICS 515 - GIAC GRID: 05-course_cliffnotes/002-ICS 515 - GIAC GRID.md
-  - Referenced Works: 99-postface/001-Referenced Works.md
-  - Other Online Resources: 99-postface/002-Online Resources.md
+  - 00-Index: index.md
+  - 01-Cheat Sheets:
+      - CS_AA_001-Overview: 01-cheat_sheets/CS_AA_001-Cheat Sheet Overview.md
+      - CS_TL_001-Wireshark: 01-cheat_sheets/CS_TL_001-Wireshark.md
+      - CS_TL_002-PowerShell: 01-cheat_sheets/CS_TL_002-PowerShell.md
+  - 05-Course Cliffnotes:
+      - CC_000-Overview: 05-course_cliffnotes/001-Course Cliffnotes.md
+      - CC_001-ICS515: 05-course_cliffnotes/002-ICS 515 - GIAC GRID.md
+  - 99-Postface:
+      - RF_001-Referenced Works: 99-postface/001-Referenced Works.md
+      - RF_002-Online Resources: 99-postface/002-Online Resources.md
 
 docs_dir: src

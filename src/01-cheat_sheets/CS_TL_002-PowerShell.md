@@ -1,4 +1,4 @@
-PowerShell. If you are working extensively in
+PowerShell. If you are working extensively in Windows, this will be extensively useful.
 # PowerShell Remoting
 Always helpful use a tool such as **PowerShell ISE** (on Windows) which can hold context while you script.
 
@@ -18,6 +18,7 @@ You'll need to make sure you remove PSSessions once you are done interacting wit
 ```powershell
 Remove-PSSession $Session # replace $Session with * to remove all sessions.
 ```
+
 ### Copying Files To/From
 Requires you have a PSSession already set up and active. Absolute paths are *recommended* in both the local and remote path to minimize ambiguity.
 ```powershell
@@ -27,6 +28,7 @@ Copy-Item -Path <LOCAL_PATH> -ToSession $Session -Destination <REMOTE_PATH>
 # case 2: copy from remote machine to your machine
 Copy-Item -FromSession $Session -Path <REMOTE_PATH> -Destination <LOCAL_PATH>
 ```
+
 ## With `Invoke-Command`
 `Invoke-Command` is a cmdlet that runs a one-off command (or script, if you choose) on a remote machine. Has the added benefit of not having to keep track of your PSSessions.
 
@@ -44,6 +46,7 @@ In either case, you have the option to save the output from that remote machine 
 # example: run Get-Process on a remote machine, pipe it to CSV on the local machine.
 Invoke-Command -Credential $Creds -ComputerName dc1.example.net -ScriptBlock { Get-Process } | Export-Csv C:\Hunt\dc1-processes.csv
 ```
+
 ### Targeting Multiple Hosts
 If you have multiple computers, you can run one `Invoke-Command` against multiple computers by passing in an array to `-ComputerName`. How you get the array is up to you: straight up hand-jam in ISE, read in from a `.txt` file, or read in from a `.csv` file with `Select-Object` are common ways.
 ```powershell

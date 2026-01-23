@@ -1,5 +1,4 @@
 Wireshark ([wireshark.org](https://www.wireshark.org)) is a free and open-source protocol analyzer.
-
 # Statistics Feature
 The Wireshark **Statistics** tab has several windows that allow you to quickly explore a .pcap at a high level. These include:
 - Protocol Hierarchy

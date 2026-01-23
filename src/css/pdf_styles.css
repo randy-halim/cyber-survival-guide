@@ -32,4 +32,57 @@
   td {
     font-size: 11pt !important;
   }
+
+  /* --- Callout/Admonition Fixes --- */
+
+  /* Force admonition content to match body font size */
+  .md-typeset .admonition,
+  .md-typeset .admonition-title,
+  .md-typeset .admonition p,
+  .md-typeset .admonition li {
+    font-size: 11pt !important;
+  }
+
+  /* Fix icon overlapping text in admonition titles */
+  /* 1. Ensure title has enough padding to clear the icon */
+  .md-typeset .admonition-title,
+  .md-typeset .note>.admonition-title,
+  .md-typeset .abstract>.admonition-title,
+  .md-typeset .info>.admonition-title,
+  .md-typeset .tip>.admonition-title,
+  .md-typeset .success>.admonition-title,
+  .md-typeset .question>.admonition-title,
+  .md-typeset .warning>.admonition-title,
+  .md-typeset .failure>.admonition-title,
+  .md-typeset .danger>.admonition-title,
+  .md-typeset .bug>.admonition-title,
+  .md-typeset .example>.admonition-title,
+  .md-typeset .quote>.admonition-title {
+    padding-left: 4rem !important;
+    /* Plenty of space for the icon */
+    position: relative !important;
+    /* Anchor for absolute icon */
+  }
+
+  /* 2. Position the icon absolutely to the left */
+  .md-typeset .admonition-title::before,
+  .md-typeset .note>.admonition-title::before,
+  .md-typeset .abstract>.admonition-title::before,
+  .md-typeset .info>.admonition-title::before,
+  .md-typeset .tip>.admonition-title::before,
+  .md-typeset .success>.admonition-title::before,
+  .md-typeset .question>.admonition-title::before,
+  .md-typeset .warning>.admonition-title::before,
+  .md-typeset .failure>.admonition-title::before,
+  .md-typeset .danger>.admonition-title::before,
+  .md-typeset .bug>.admonition-title::before,
+  .md-typeset .example>.admonition-title::before,
+  .md-typeset .quote>.admonition-title::before {
+    position: absolute !important;
+    left: 1rem !important;
+    top: 0.7rem !important;
+    /* Adjust specific vertical alignment if needed */
+    margin: 0 !important;
+    /* Reset any margins interfering with position */
+  }
 }

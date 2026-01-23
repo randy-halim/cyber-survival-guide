@@ -59,6 +59,8 @@ nav:
       - CS_AA_001-Overview: 01-cheat_sheets/CS_AA_001-Cheat Sheet Overview.md
       - CS_TL_001-Wireshark: 01-cheat_sheets/CS_TL_001-Wireshark.md
       - CS_TL_002-PowerShell: 01-cheat_sheets/CS_TL_002-PowerShell.md
+  - 01a-CVA/H Cheat Sheets:
+      - CS_CVAH_001-MIP Config: 01-cheat_sheets/CS_CVAH_001-MIP Config.md
   - 05-Course Cliffnotes:
       - CC_000-Overview: 05-course_cliffnotes/001-Course Cliffnotes.md
       - CC_001-ICS515: 05-course_cliffnotes/002-ICS 515 - GIAC GRID.md
